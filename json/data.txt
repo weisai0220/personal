@@ -1,0 +1,6 @@
+﻿[{"name":"令狐冲","age":24,"socre":99,"sex":0},
+{"name":"任盈盈","age":22,"socre":90,"sex":1},
+{"name":"林平之","age":23,"socre":89,"sex":0},
+{"name":"岳灵珊","age":22,"socre":80,"sex":1},
+{"name":"东方不败","age":26,"socre":100,"sex":0},
+{"name":"岳不群","age":35,"socre":100,"sex":0}]

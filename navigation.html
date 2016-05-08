@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/navigation.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <ul class="menu">
+        <li class="level1">
+            <a href="#">衬衫</a>
+            <ul class="level2">
+                <li><a href="#">短袖衬衫</a></li>
+                <li><a href="#">长袖衬衫</a></li>
+                <li><a href="#">短袖T恤</a></li>
+                <li><a href="#">长袖T恤</a></li>
+            </ul>
+        </li>
+        <li class="level1">
+            <a href="#">卫衣</a>
+            <ul class="level2">
+                <li><a href="#">开襟卫衣</a></li>
+                <li><a href="#">套头卫衣</a></li>
+                <li><a href="#">运动卫衣</a></li>
+                <li><a href="#">童装卫衣</a></li>
+            </ul>
+        </li>
+        <li class="level1">
+            <a href="#">裤子</a>
+            <ul class="level2">
+                <li><a href="#">短裤</a></li>
+                <li><a href="#">休闲裤</a></li>
+                <li><a href="#">牛仔裤</a></li>
+                <li><a href="#">免烫卡其裤</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript">;
+   $(".level1>a").click(function(){
+       var $ul = $(this).next();
+       if($ul.is(":visible")){
+           $ul.hide();
+       }else{
+           $(this).next().show().parent().siblings().children("ul").hide();
+       }
+       return false;
+   })
+
+    document.oncontextmenu = function(e){
+        var oDiv = document.createElement("div");
+        oDiv.id = "menu";
+        //oDiv.style.width = "100px";
+        //oDiv.style.height = "200px";
+        oDiv.style.backgroundColor="pink";
+        oDiv.innerHTML = "hello";
+        oDiv.style.left = e.pageX+"px";
+        oDiv.style.top = e.pageY+"px";
+        document.body.appendChild(oDiv);
+        return false;
+    }
+</script>
+<!--<script type="text/javascript" src="js/DOM.js"></script>
+<script type="text/javascript">
+    var oLevel1s = DOM.getElesByClass("level1");
+    var oAs = [];
+    for(var i=0;i<oLevel1s.length;i++){
+        oAs.push(DOM.children(oLevel1s[i],"a")[0]);
+    }
+    for(var i=0;i<oAs.length;i++){
+        oAs[i].onclick = function(){
+
+            if(DOM.next(this).style.display=="block"){
+                console.log(DOM.next(this).style.display);
+                DOM.next(this).style.display ="none";
+            }else{
+                DOM.next(this).style.display ="block";
+                console.log(DOM.next(this).style.display);
+            }
+            /*var oUl = DOM.next(this);
+            oUl.style.display = "block";
+            //console.log(oUl.style.display);
+            if(oUl.style.display == "block"){
+                oUl.style.display ="none";
+                console.log(oUl.style.display);
+            }else{
+                oUl.style.display ="block";
+            }*/
+            var otherLis = DOM.siblings(this.parentNode);
+            var otherUls = [];
+            for(var i=0;i<otherLis.length;i++){
+                otherUls.push(DOM.children(otherLis[i],'ul')[0]);
+            }
+            for(var i=0;i<otherUls.length;i++){
+                otherUls[i].style.display = "none";
+            }
+            return false;
+        }
+    }
+</script>-->
+</body>
+</html>

@@ -1,0 +1,800 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-famaily:'黑体';
+}
+ul,li{
+    list-style: none;
+}
+#main{
+    width: 640px;
+    height: 960px;
+    position: relative;
+    overflow: hidden;
+}
+#list li{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    font-size: 100px;
+    text-align: center;
+    z-index: 5;
+}
+#list li.zIndex{
+    z-index: 6;
+}
+#list li:nth-child(1){
+    background-color: #5652a1;
+    display: block;
+}
+#list li:nth-child(2){
+    background-color: #1a5b9f;
+}
+#list li:nth-child(3){
+    background-color: #e86132;
+}
+#list li:nth-child(4){
+    background-color: #8d5c3e;
+}
+#list li:nth-child(5){
+    background-color: #edb826;
+}
+#list li:nth-child(6){
+    background-color: #4a8ecb;
+}
+#list li:nth-child(7){
+    background-color: #3d2654;
+}
+#list li:nth-child(8){
+    background-color: #4cb1b0;
+}
+.li1Child {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.li1Child>img{
+    width: 490px;
+    height: 121px;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    margin-left: -245px;
+}
+.li1Child>img:nth-child(2){
+    animation: 2s infinite myImg;
+    -webkit-animation:  2s infinite myImg;
+}
+@keyframes myImg {
+    0%{ opacity: 1;transform: scale(1) }
+    100%{opacity: 0;transform: scale(1.2)}
+}
+@-webkit-keyframes myImg {
+    0%{ opacity: 1;transform: scale(1) }
+    100%{opacity: 0;transform: scale(1.2)}
+}
+.li1Child .li1Text{
+    width: 490px;
+    height: 80px;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    margin-left: -245px;
+    line-height: 1.5em;
+    color: #FFFFFF;
+    font-size: 30px;
+}
+.li1Child .li1Text .li1Num{
+    font-weight: bold;
+    color: #f0284d;
+    font-size: 48px;
+}
+.li1Child .li1Balls img:nth-child(1){
+    width: 487px;
+    height: 485px;
+    position: absolute;
+    left: 50%;
+    margin-left: -243px;
+    top: 27%;
+    z-index: 4;
+}
+.li1Child .li1Balls img:nth-child(2){
+    width: 84px;
+    height: 83px;
+    position: absolute;
+    left: 5%;
+    top: 80%;
+}
+.li1Child .li1Balls img:nth-child(3){
+    width: 95px;
+    height: 98px;
+    position: absolute;
+    left: 78%;
+    top: 36%;
+}
+.li1Child .li1Balls img:nth-child(4){
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    left: 90%;
+    top: 75%;
+}
+.li1Child .li1Balls img:nth-child(5){
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    left: 4%;
+    top: 48%;
+}
+.li1Child .li1Balls img:nth-child(6){
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    left: 93%;
+    top: 88%;
+}
+.li1Child .li1Balls img:nth-child(7){
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    left: 50%;
+    top: 3%;
+}
+.li1Child .li1Bottom img:nth-child(1){
+    width: 640px;
+    height: 201px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation-delay: .1s;
+    -webkit-animation-delay: .1s;
+}
+.li1Child .li1Bottom img:nth-child(2){
+    width: 434px;
+    height: 188px;
+    position: absolute;
+    top: 72%;;
+    left:14%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+    z-index: 7;
+}
+.li1Child .li1Bottom img:nth-child(3){
+    width: 204px;
+    height: 212px;
+    position: absolute;
+    top: 43%;;
+    left: 34%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+    z-index: 6;
+}
+.li1Child .li1Bottom h3{
+    font-size: 35px;
+    font-weight: normal;
+    color: #f5a623;
+    width: 260px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -130px;
+    bottom: 2%;
+}
+
+.li2Child >img:nth-child(1){
+    width: 187px;
+    height: 159px;
+    position: absolute;
+    top: 0;
+    left: -1%;
+}
+.li2Child >img:nth-child(2){
+    width: 490px;
+    height: 53px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -245px;
+    animation: 2s infinite myTit;
+    -webkit-animation: 2s infinite myTit;
+}
+@keyframes myTit {
+    0%{transform: scale(1);-webkit-transform: scale(1);}
+    100%{transform: scale(1.1);-webkit-transform: scale(1.1);}
+}
+.li2Child .li2Text{
+    width: 470px;
+    height: 80px;
+    position: absolute;
+    left: 14%;
+    top: 17%;
+    font-size: 33px;
+    font-weight: normal;
+    color: #ffffff;
+    line-height: 1.5em;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li2Child .li2Num{
+    font-size: 48px;
+    color: #e1451b;
+    font-weight: bold;
+}
+.li2Child .botBg{
+    width: 640px;
+    height: 183px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li2Child .man img{
+    width: 253px;
+    height: 335px;
+    position: absolute;
+    left: 40%;
+    top: 32%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li2Child .man span{
+    font-size: 35px;
+    color: #fff;
+    position: absolute;
+    left: 68%;
+    top: 46%;
+    animation-delay: .1s;
+    -webkit-animation-delay: .1s;
+}
+.li2Child .man b{
+    color: #f5a623;
+    font-size: 48px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li2Child .girl img{
+    width: 163px;
+    height: 233px;
+    position: absolute;
+    left: 10%;
+    top: 65%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li2Child .girl span{
+    font-size: 35px;
+    color: #fff;
+    position: absolute;
+    left: 40%;
+    top: 75%;
+    animation-delay: .1s;
+    -webkit-animation-delay: .1s;
+}
+.li2Child .girl b{
+    color: #f5a623;
+    font-size: 48px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li2Balls > img{
+    animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+}
+.li2Balls img:nth-child(1){
+    position: absolute;
+    top: 70%;
+    left: 90%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li2Balls img:nth-child(2){
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li2Balls img:nth-child(3){
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li2Balls img:nth-child(4){
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 80%;
+    left: 95%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li3Child .tHead{
+    width: 422px;
+    position: absolute;
+    left: 50%;
+    margin-left: -211px;
+    top: 10%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li3Child .imgContent img:nth-child(1){
+    width: 372px;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    margin-left: -186px;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li3Child .imgContent img:nth-child(2){
+    width: 54px;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    margin-left: -27px;
+}
+.li3Child .imgContent img:nth-child(3){
+    width: 251px;
+    position: absolute;
+    left: 50%;
+    top: 37%;
+    margin-left: -125px;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li3Child .imgContent p:nth-of-type(1) {
+    position: absolute;
+    top: 27%;
+    left: 32%;
+    letter-spacing: 15px;
+    color: #f5a623;
+    font-size: 50px;
+}
+.li3Child h2{
+    font-size: 50px;
+    color: #f66e17;
+    position: absolute;
+    top: 60%;
+    left: 30%;
+}
+.li3Child p:nth-of-type(2){
+    position: absolute;
+    left: 15%;
+    top: 68%;
+    font-size: 30px;
+    color: white;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+
+.li3Child .li3Bottom{
+    width: 90%;
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+    margin-left: -45%;
+}
+.li3Child .li3Bottom dl{
+    float: left;
+    width: 93px;
+    height: 130px;
+    margin: 25px;
+}
+.li3Child .li3Bottom dl dt{
+    width: 93px;
+    height: 93px;
+}
+.li3Child .li3Bottom dl dd{
+    width: 90px;
+    font-size: 35px;
+    color: #FFFFFF;
+}
+.li4Child .tHead{
+    width:528px;
+    position: absolute;
+    left: 50%;
+    margin-left: -264px;
+    top: 10%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li4Child p:nth-of-type(1){
+    font-size: 35px;
+    color: #FFFFFF;
+    position: absolute;
+    left: 25%;
+    top: 20%;
+}
+.li4Child p:nth-of-type(1) em{
+    color: #f5a623;
+}
+.li4Child .li4Content img:nth-child(1){
+    position: absolute;
+    left: 3%;
+    top: 26%;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li4Child .li4Content img:nth-child(2){
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li4Child .li4Content img:nth-child(3){
+    position: absolute;
+    left: 30%;
+    top: 65%;
+    animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+}
+.li4Child .instruct{
+    font-size: 25px;
+    color: #8d5c3e;
+}
+.li4Child .instruct p:nth-of-type(1){
+    font-size: 25px;
+    color: #8d5c3e;
+    position: absolute;
+    left: 53%;
+    top: 30%;
+}
+.li4Child .instruct p:nth-of-type(2){
+    position: absolute;
+    left: 53%;
+    top: 35%;
+}
+.li4Child .instruct p:nth-of-type(3){
+    position: absolute;
+    left: 53%;
+    top: 40%;
+}
+.li4Child .instruct p b{
+    font-size: 40px;
+}
+.li4Child .instruct p:nth-child(1) span{
+    color: #f5a623;
+}
+.li4Child .instruct p:nth-child(2) span{
+    color: #FFFFFF;
+}
+.li4Child .instruct p:nth-child(3) span{
+    color: #8d5c3e;
+}
+.li4Child img:nth-of-type(2) {
+    animation-delay: .2s;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+.li4Child img:nth-of-type(3){
+    animation-delay: .2s;
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
+.li5Child .tHead{
+    width:528px;
+    position: absolute;
+    left: 50%;
+    margin-left: -264px;
+    top: 10%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li5Child p:nth-of-type(1){
+    font-size: 35px;
+    color: #FFFFFF;
+    position: absolute;
+    left: 19%;
+    top: 20%;
+}
+.li5Child p:nth-of-type(1) em{
+    color: #7d3302;
+}
+.li5Child .li4Content img:nth-child(1){
+    position: absolute;
+    left: 53%;
+    top: 26%;
+    animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+}
+.li5Child .li4Content img:nth-child(2){
+    position: absolute;
+    left: 17%;
+    top: 30%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li5Child .li4Content img:nth-child(3){
+    position: absolute;
+    left: 16%;
+    bottom: 12%;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li5Child .instruct{
+    font-size: 25px;
+    color: #8d5c3e;
+}
+.li5Child .instruct p:nth-of-type(1){
+    font-size: 25px;
+    color: #8d5c3e;
+    position: absolute;
+    left: 19%;
+    top: 32%;
+}
+.li5Child .instruct p:nth-of-type(2){
+    position: absolute;
+    left: 19%;
+    top: 37%;
+}
+.li5Child .instruct p:nth-of-type(3){
+    position: absolute;
+    left: 19%;
+    top: 42%;
+}
+.li5Child .instruct p b{
+    font-size: 40px;
+}
+.li5Child .instruct p:nth-child(1) span{
+    color: #ffffff;
+}
+.li5Child .instruct p:nth-child(2) span{
+    color: #ffffcc;
+}
+.li5Child .instruct p:nth-child(3) span{
+    color: #94C3FF;
+}
+.li5Child img:nth-of-type(2) {
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+    position: absolute;
+    bottom: 4%;
+    right: 5%;
+}
+.li6Child .tHead{
+    width:528px;
+    position: absolute;
+    left: 50%;
+    margin-left: -264px;
+    top: 10%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li6Child p:nth-of-type(1){
+    font-size: 35px;
+    color: #FFFFFF;
+    position: absolute;
+    left: 19%;
+    top: 20%;
+}
+.li6Child p:nth-of-type(1) em{
+    color: #7d3302;
+}
+.li6Child .li4Content img:nth-child(1){
+    position: absolute;
+    left: 6%;
+    top: 26%;
+    animation-delay: .2s;
+}
+.li6Child .li4Content img:nth-child(2){
+    position: absolute;
+    left: 40%;
+    top: 35%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li6Child .li4Content img:nth-child(3){
+    position: absolute;
+    left: 6%;
+    bottom: 22%;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li6Child .instruct{
+    font-size: 25px;
+    color: #94C3FF;
+}
+.li6Child .instruct p:nth-of-type(1){
+    font-size: 25px;
+    color: #8d5c3e;
+    position: absolute;
+    left: 47%;
+    top: 36%;
+}
+.li6Child .instruct p:nth-of-type(2){
+    position: absolute;
+    left: 47%;
+    top: 40%;
+}
+.li6Child .instruct p:nth-of-type(3){
+    position: absolute;
+    left: 42%;
+    top: 44%;
+}
+.li6Child .instruct p b{
+    font-size: 40px;
+}
+.li6Child .instruct p:nth-child(1) span{
+    color: #fb9894;
+}
+.li6Child .instruct p:nth-child(2) span{
+    color: #94C3FF;
+}
+.li6Child .instruct p:nth-child(3) span{
+    color: #f5a623;
+}
+.li6Child img:nth-of-type(2) {
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+    position: absolute;
+    bottom: 7%;
+    right: 8%;
+}
+
+.li7Child .tHead{
+    width:528px;
+    position: absolute;
+    left: 50%;
+    margin-left: -264px;
+    top: 10%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li7Child p:nth-of-type(1){
+    font-size: 35px;
+    color: #FFFFFF;
+    position: absolute;
+    left: 26%;
+    top: 20%;
+}
+.li7Child p:nth-of-type(1) em{
+    color: #7d3302;
+}
+.li7Child .li4Content img:nth-child(1){
+    width: 222px;
+    height: 545px;
+    position: absolute;
+    left: 55%;
+    top: 25%;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li7Child .li4Content img:nth-child(2){
+    width: 276px;
+    height: 180px;
+    position: absolute;
+    left: 22%;
+    top: 30%;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li7Child .li4Content img:nth-child(3){
+    width: 275px;
+    height: 187px;
+    position: absolute;
+    left: 22%;
+    bottom: 20%;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li7Child .instruct{
+    font-size: 25px;
+    color: #5652a1;
+}
+.li7Child .instruct p:nth-of-type(1){
+    font-size: 25px;
+    color: #5652a1;
+    position: absolute;
+    left: 24%;
+    top: 30%;
+}
+.li7Child .instruct p:nth-of-type(2){
+    position: absolute;
+    left: 24%;
+    top: 35%;
+}
+.li7Child .instruct p:nth-of-type(3){
+    position: absolute;
+    left: 23%;
+    top: 40%;
+}
+.li7Child .instruct p b{
+    font-size: 40px;
+}
+.li7Child .instruct p:nth-child(1) span{
+    color: #f5a623;
+}
+.li7Child .instruct p:nth-child(2) span{
+    color: #FFFFFF;
+}
+.li7Child .instruct p:nth-child(3) span{
+    color: #8d5c3e;
+}
+.li7Child img:nth-of-type(2) {
+    width: 254px;
+    height: 79px;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+    position: absolute;
+    bottom: 7%;
+    left: 29%;
+}
+
+.li8Child img:nth-of-type(1){
+    width: 392px;
+    height: 93px;
+    position: absolute;
+    left: 50%;
+    margin-left: -196px;
+    top: 8%;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+.li8Child p:nth-of-type(1){
+    font-size: 35px;
+    color: #FFFFFF;
+    position: absolute;
+    left: 25%;
+    top: 21%;
+}
+.li8Child img:nth-of-type(2){
+    position: absolute;
+    width: 184px;
+    left: 50%;
+    top: 25%;
+    margin-left: -92px;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li8Child img:nth-of-type(3){
+    position: absolute;
+    left: 0;
+    top: 40%;
+}
+.li8Child img:nth-of-type(4){
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+.li8Child img:nth-of-type(5){
+    position: absolute;
+    left: 23%;
+    top: 46%;
+    animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+.li8Child img:nth-of-type(6){
+    position: absolute;
+    left: 40%;
+    bottom: 15%;
+    animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+}
+.li8Child p:nth-of-type(2){
+    font-size: 50px;
+    color: yellow;
+    position: absolute;
+    left: 25%;
+    bottom: 6%;
+}

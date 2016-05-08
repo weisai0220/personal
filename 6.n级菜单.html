@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>级联菜单</title>
+    <style type="text/css">
+        ul,li{
+            margin:0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            margin: 10px;
+            width: 180px;
+            padding: 5px;
+        }
+        li span{
+            width: 150px;
+            display: block;
+            line-height: 1.5em;
+            background-color: #00fa00;
+        }
+        li span.open{
+            background-color: #00FFFF;
+        }
+        li span.open::before{
+            content: '-';
+            font-size: 24px;
+            font-weight: bold;
+            color: #145072;
+        }
+        li span.closed{
+            background-color: #00FFFF;
+        }
+        li span.closed::before{
+            content: '+';
+            font-size: 24px;
+            font-weight: bold;
+            color: #145072;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li>
+        <span>1第一级第一个</span>
+        <ul>
+            <li>
+                <span>1-1第二级第一个</span>
+                <ul>
+                    <li><span>1-1-1第三级第一个</span></li>
+                    <li><span>1-1-1第三级第二个</span></li>
+                    <li><span>1-1-1第三级第三个</span></li>
+                    <li><span>1-1-1第三级第四个</span></li>
+                    <li><span>1-1-1第三级第五个</span></li>
+                </ul>
+            </li>
+            <li><span>1-1第二级第二个</span></li>
+            <li><span>1-1第二级第三个</span></li>
+            <li><span>1-1第二级第四个</span></li>
+            <li><span>1-1第二级第五个</span></li>
+        </ul>
+    </li>
+    <li>
+        <span>1第一级第二个</span>
+        <ul>
+            <li><span>1-1-1第三级第一个</span></li>
+            <li><span>1-1-1第三级第二个</span></li>
+            <li><span>1-1-1第三级第三个</span></li>
+            <li><span>1-1-1第三级第四个</span></li>
+            <li><span>1-1-1第三级第五个</span></li>
+        </ul>
+    </li>
+    <li><span>1第一级第三个</span></li>
+    <li>
+        <span>1第一级第四个</span>
+        <ul>
+            <li><span>1-1-1第三级第一个</span></li>
+            <li><span>1-1-1第三级第二个</span></li>
+            <li><span>1-1-1第三级第三个</span></li>
+            <li><span>1-1-1第三级第四个</span></li>
+            <li><span>1-1-1第三级第五个</span></li>
+        </ul>
+    </li>
+    <li><span>1第一级第五个</span></li>
+</ul>
+
+<script type="text/javascript">
+    var oMenu = document.getElementById("menu");
+    var oSpans = oMenu.getElementsByTagName("span");
+    for(var i=0;i<oSpans.length;i++){
+        var oSpan = oSpans.item(i);
+        var oUl = oSpan.nextElementSibling;
+        if(oUl){
+            oUl.style.display = "none";
+            oSpan.className = "closed";
+        }
+    }
+
+    oMenu.onclick = function(e){
+        var target = e.target;
+        if(target.tagName=="SPAN"){
+            var oUl = target.nextElementSibling;
+            if(oUl){
+                if(oUl.style.display == "none"){
+                    oUl.style.display = "block";
+                    target.className = "open";
+                }else{
+                    oUl.style.display = "none";
+                    target.className = "closed";
+                    //关闭本级菜单的同时，关闭所有的下边的子菜单
+                    var otherUls = oUl.getElementsByTagName("ul");
+                    for(var i=0;i<otherUls.length;i++){
+                        otherUls[i].previousElementSibling.className = "closed";
+                        otherUls[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

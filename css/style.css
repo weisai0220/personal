@@ -1,0 +1,249 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+ul,ol{
+    list-style: none;
+}
+#main{
+    width: 640px;
+    height: 1877px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -320px;
+    top: 0;
+    transform-origin: top;
+    -webkit-transform-origin: top;
+}
+.header ul{
+    display:flex;
+    flex-flow:row wrap;
+    background-color: #2b282e;
+    justify-content: space-around;
+}
+.header ul li{
+    line-height: 90px;
+    color: #FFFFFF;
+    font-size: 36px;
+    margin: 0 20px;
+}
+.header ul li:nth-child(1){
+    background: url("../images/head_01.png") no-repeat left center;
+    padding-left: 30px;
+}
+
+.headContent {
+    width: 640px;
+    height: 484px;
+    background-image: url("../images/head_bg_02.png");
+}
+.headContent0{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 410px;
+}
+.headContent1 ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 0 30px;
+    color: #FFFFFF;
+}
+.headContent1 ul li{
+    font-size: 60px;
+}
+.headContent2{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    color: #FFFFFF;
+    margin: 25px;
+}
+.headContent2 p{
+    font-size: 30px;
+}
+.headContent3{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    color: #94C3FF;
+}
+.headContent3 p{
+    width: 240px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    font-size: 40px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.headContent3 p img{
+    width: 14px;
+    height: 14px;
+    margin-top: 23px;
+}
+.headContent4{
+    padding: 14px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    border-top: 1px solid #FFFFFF;
+}
+.headContent4 ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.headContent4 ul li{
+    font-size: 30px;
+    color: #FFFFFF;
+}
+#content{
+    background-color:  #f0f0f0;
+}
+.data{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 28px;
+}
+.data p{
+    color: #818283;
+}
+.data >ul>li{
+    border-bottom: 1px solid #d7d7d7;
+}
+.data ol{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.data ol li{
+    margin: 20px 45px;
+    color: #313131;
+}
+.data ol li:nth-child(2){
+    color: #797979;
+}
+
+.match{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 28px;
+}
+.match>div{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+.match div:nth-of-type(1){
+    border-bottom: 1px solid #d7d7d7;
+}
+.match>div div:nth-child(1){
+    display: block;
+    width: 152px;
+    height: 120px;
+    margin-right: 10px;
+    float: left;
+}
+.match>div div:nth-child(2){
+    float: left;
+    width: 450px;
+    margin-left: 12px;
+}
+.match>div h2{
+    line-height: 40px;
+    font-size: 30px;
+    color: #696969;
+}
+.match>div p{
+    line-height: 40px;
+    font-size: 24px;
+    color: #bdbfc0;
+}
+.match>div p span{
+    float: right;
+}
+
+.battle{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+    font-size: 28px;
+}
+.battle>div{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+.battle div:nth-of-type(1) {
+    border-bottom: 1px solid #d7d7d7;
+}
+.battle>div div:nth-child(1){
+    display: block;
+    width: 152px;
+    height: 120px;
+    float: left;
+    margin-right: 10px;
+}
+.battle>div div:nth-child(2){
+    float: left;
+    width: 450px;
+    margin-left: 12px;
+}
+.battle>div h2{
+    line-height: 40px;
+    font-size: 30px;
+    color: #696969;
+}
+.battle>div p{
+    line-height: 40px;
+    font-size: 24px;
+    color: #bdbfc0;
+}
+.battle>div p span{
+    float: right;
+}
+
+.bottom{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+.bottom>div{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.bottom>div h1{
+    font-size: 36px;
+}
+.bottom>div p{
+    font-size: 24px;
+}
+.bottom div:nth-of-type(2){
+    width: 120px;
+    height: 60px;
+    color: #FFFFFF;
+    background-image: url("../images/bottom_02.png");
+    font-size: 30px;
+    line-height: 60px;
+    text-align: center;
+}

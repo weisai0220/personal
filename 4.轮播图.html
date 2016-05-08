@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer {
+            height: 270px;
+            width: 500px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #inner{
+            width: 2500px;
+            height: 270px;
+            background-color: #08BECE;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+        #inner div{
+            width: 500px;
+            height: 270px;
+            line-height: 270px;
+            float: left;
+            text-align: center;
+            font-size: 80px;
+            color: whitesmoke;
+        }
+        #btn{
+            list-style: none;
+            position: absolute;
+            bottom: 30px;
+            left: 130px;
+        }
+        #btn li{
+            float: left;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
+            margin: 10px;
+            background-color: #faeb9e;
+            color: #0000fa;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #btn li.promoted{
+            background-color: #000060;
+        }
+        #outer .left{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #014d68;
+            position: absolute;
+            left: 0;
+            top: 110px;
+            font-size: 40px;
+            z-index: 20;
+            cursor: pointer;
+        }
+        #outer .right{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #014d68;
+            position: absolute;
+            right: 0;
+            top: 110px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div class="left"><<</div>
+    <div id="inner">
+        <div style="background-color: #0cf93e">1</div>
+        <div style="background-color: #7d7d00">2</div>
+        <div style="background-color: #aa22aa">3</div>
+        <div>4</div>
+        <div style="background-color: #E31559">5</div>
+    </div>
+    <ul id="btn">
+        <li class="promoted">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="right">>></div>
+</div>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript">
+    var oLis = document.getElementById("btn").getElementsByTagName("li");
+    var oDiv = document.getElementById("inner").getElementsByTagName("div").item(0);
+    inner.appendChild(oDiv.cloneNode(true));
+    inner.style.width = oDiv.offsetWidth + inner.offsetWidth +"px";
+    var autoTimer = window.setInterval(autoLeft,2000);
+    var oLeft = document.getElementsByClassName("left")[0];
+    var oRight = document.getElementsByClassName("right")[0];
+    oLeft.onclick = function(){
+        clearInterval(autoTimer);
+        autoTimer = window.setInterval(autoLeft,2000);
+    };
+    oRight.onclick = function(){
+        clearInterval(autoTimer);
+        autoTimer = window.setInterval(autoRight,2000);
+    }
+
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].n = i;
+        oLis[i].onclick = function(){
+            animate(inner,{left:this.n*-500},800);
+            step = this.n;
+            current(step);
+            clearInterval(autoTimer);
+
+            autoTimer = window.setTimeout(function(){
+                autoTimer = window.setInterval(autoRight,2000);
+            },3000);
+        }
+    }
+
+    var step = 0;
+    function autoLeft(){
+        step++;
+        if(step>=6){
+            inner.style.left = 0;
+            step = 1;
+        }
+        if(step == 5){
+            current(0);
+        }else{
+            current(step);
+        }
+        animate(inner,{left:step*-500},600);
+    }
+
+
+    function autoRight(){
+        step--;
+        if(step<0){
+            inner.style.left = "-2500px";
+            step = 4;
+        }
+        if(step == 0){
+            current(0);
+        }else{
+            current(step);
+        }
+        animate(inner,{left:step*-500},600);
+    }
+
+    function current(n){
+        for(var i=0;i<oLis.length;i++){
+            oLis[i].className = "";
+        }
+        oLis[n].className = "promoted";
+    }
+</script>
+</body>
+</html>

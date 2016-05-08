@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>放大镜效果</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #content{
+            width: 300px;
+            height: 223px;
+            background-image: url("images/smallPeony.jpg");
+            position: relative;
+            margin: 50px auto;
+        }
+        #mask{
+            cursor: move;
+            position: absolute;
+            background-color: beige;
+            opacity: 0.5;
+        }
+        #show{
+            position: absolute;
+            width: 300px;
+            height: 223px;
+            overflow: hidden;
+            top: 0;
+            left: 310px;
+        }
+    </style>
+</head>
+<body>
+<div id="content"></div>
+<!--<img src="img/smallPeony.jpg" alt="" width="300" height="223"/>
+<img src="img/peony.jpg" alt="" width="950" height="706"/>-->
+<script type="text/javascript">
+    //大图是950*706，小图是300*223
+    var scaleX = 300/950;
+    var scaleY = 223/706;
+    var content = document.getElementById("content");
+    content.onmouseenter = function(e){
+        e = e||window.event;
+        var w = 300*scaleX;
+        var h = 223*scaleY;
+        var oMask = document.createElement("div");
+        oMask.id = "mask";
+        with(oMask.style){//以oMask.style为上下文（作用域）查找
+            left = e.clientX - this.offsetLeft+ "px";
+            top = e.clientY - this.offsetTop+"px";
+            height = h + "px";
+            width = w +"px";
+        }
+//        oMask.style.left = e.clientX - this.offsetLeft + "px";
+//        oMask.style.top = e.clientY - this.offsetTop+"px";
+        this.appendChild(oMask);
+
+        //以下是显示区域
+        var oShow = document.createElement("div");
+        oShow.id = "show";
+        var oImg = document.createElement("img");
+        oImg.src = "images/peony.jpg";
+        oShow.appendChild(oImg);
+        this.appendChild(oShow);
+    }
+
+    content.onmousemove = function(e){
+        var oMask = document.getElementById("mask");
+        var oShow = document.getElementById("show");
+        if(oMask){
+            var l = e.clientX - this.offsetLeft-oMask.offsetWidth/2;//正常情况下mask的水平位置
+            var t = e.clientY - this.offsetTop - oMask.offsetHeight/2;
+            var maxL = this.offsetWidth-oMask.offsetWidth;//mask能到达的最右边
+            var maxT = this.offsetHeight - oMask.offsetHeight;//mask能到达的最下边
+
+            with(oMask.style){//以oMask.style为上下文（作用域）查找
+                //设置让鼠标居中
+            /*left = e.clientX - this.offsetLeft -oMask.offsetWidth/2 + "px";
+            top = e.clientY - this.offsetTop - oMask.offsetHeight/2+"px";*/
+                if(l<=0){
+                    left = 0;
+                }else if(l>=maxL){
+                    left = maxL+"px";
+                }else{
+                    left = l+"px";
+                    oShow.scrollLeft = l/scaleY; //控制放大显示区水平移动
+                }
+                if(t<=0){
+                    top=0;
+                }else if(t>=maxT){
+                    top = maxT+"px";
+                }else{
+                    top = t+"px";
+                    oShow.scrollTop = t/scaleY;
+                }
+            }
+        }
+    }
+
+    content.onmouseleave = function(){
+        var oMask = document.getElementById("mask");
+        if(oMask){
+            this.removeChild(oMask);
+        }
+        var oShow = document.getElementById("show");
+        if(oShow){
+            this.removeChild(oShow);
+        }
+    }
+</script>
+</body>
+</html>

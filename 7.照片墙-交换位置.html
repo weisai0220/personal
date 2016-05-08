@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>照片墙--交换位置</title>
+    <style type="text/css">
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width: 480px;
+            height: 640px;
+            padding: 5px;
+            margin: 100px auto;
+            background-color: lightblue;
+            position: relative;
+            transform: rotate(-10deg);
+        }
+        li{
+            width: 150px;
+            height: 150px;
+            float: left;
+            margin: 5px;
+            background-color: pink;
+            border-radius: 5px;
+            -webkit-user-select: none;
+        }
+        li img{
+            width: 150px;
+            height: 150px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="images/1.png" alt=""/></li>
+    <li><img src="images/2.png" alt=""/></li>
+    <li><img src="images/3.png" alt=""/></li>
+    <li><img src="images/4.png" alt=""/></li>
+    <li><img src="images/5.png" alt=""/></li>
+    <li><img src="images/6.png" alt=""/></li>
+    <li><img src="images/7.png" alt=""/></li>
+    <li><img src="images/8.png" alt=""/></li>
+    <li><img src="images/9.png" alt=""/></li>
+    <li><img src="images/10.png" alt=""/></li>
+    <li><img src="images/11.png" alt=""/></li>
+    <li><img src="images/12.png" alt=""/></li>
+</ul>
+
+<script type="text/javascript" src="js/event.js"></script>
+<script type="text/javascript" src="js/drag.js"></script>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript">
+    var eles = document.getElementsByTagName("li");
+
+ /*   for(var i=0;i<eles.length;i++){
+        var ele = eles.item(i);
+       // ele.style.position = "absolute"; //一旦绝对定位，元素则脱离标准流，则以左上对齐
+        ele.style.left = ele.offsetLeft+"px";//这会offsetLeft就只剩margin值了
+        ele.style.top = ele.offsetTop +"px";
+    }
+    for(var i=0;i<eles.length;i++){
+        var ele = eles.item(i);
+        ele.style.position = "absolute";
+        ele.style.margin = 0;
+    }*/
+    for(var i=eles.length-1;i>=0;i--){//后面已经定位的元素不会影响前面的元素
+        var ele = eles.item(i);
+        ele.style.left = (ele.l=ele.offsetLeft)+"px";
+        ele.style.top = (ele.t=ele.offsetTop )+"px";
+        ele.style.position = "absolute";
+        ele.style.margin = 0;
+        new Drag(ele).on("dragstart",increaseIndex).on("drag",saveHited).on("dragend",keyUp).on("dragend",changePosition).border();
+
+        /*非链式写法
+        var obj = new Drag(ele);
+        obj.on("dragstart",increaseIndex);
+        obj.on("dragend",goBack);
+        obj.border();
+        */
+    }
+
+    var zIndex = 1;
+    function increaseIndex(){
+        this.ele.style.zIndex = ++zIndex;
+    }
+
+    function goBack(){
+        animate(this.ele,{left:this.ele.l,top:this.ele.t},700,3);
+    }
+
+    //检测两个盒子是否撞上了
+    //把撞上的盒子保存下来，背景改变为黄色
+    function hitedTest(r,b){//碰撞检测，返回一个布尔值
+        /*if(r.offsetLeft+ r.offsetWidth< b.offsetLeft|| r.offsetTop+ r.offsetHeight< b.offsetTop|| r.offsetLeft> b.offsetLeft+ b.offsetWidth|| r.offsetTop> b.offsetTop+ b.offsetHeight){
+            return false;
+        }else{
+            return true;
+        }*/
+        return !(r.offsetLeft+ r.offsetWidth< b.offsetLeft|| r.offsetTop+ r.offsetHeight< b.offsetTop|| r.offsetLeft> b.offsetLeft+ b.offsetWidth|| r.offsetTop> b.offsetTop+ b.offsetHeight);
+    }
+    function saveHited(){//保存撞上的，并且把撞上的背景改成黄色
+        this.aHited = [];
+        for(var i=0;i< eles.length;i++){
+            var obj = eles.item(i);
+            if(obj==this.ele)continue;
+            obj.style.backgroundColor="";//在检测之前，把原来可能被染成黄背景的给还原回来
+            if(hitedTest(this.ele,obj)){
+                this.aHited.push(obj);
+                obj.style.backgroundColor="yellow";
+            }
+        }
+    }
+
+    function keyUp(){
+        for(var i=0;i<eles.length;i++){
+            eles[i].style.backgroundColor="";
+        }
+    }
+    function changePosition(){
+        var a = this.aHited;
+        if(a&& a.length){
+            for(var i=0;i< a.length;i++){
+                var obj = a[i];
+                this.ele;
+                obj.hitedLength = Math.sqrt(Math.pow(this.ele.offsetLeft-obj.offsetLeft,2)+Math.pow(this.ele.offsetTop-obj.offsetTop,2));
+            }
+            a.sort(function(a,b){return a.hitedLength- b.hitedLength;});
+            var shortest = a[0];//距离this.ele最短的元素交换位置
+
+            shortest.style.backgroundColor = "blue";
+            animate(shortest,{left:this.ele.l,top:this.ele.t},700,3);
+            animate(this.ele,{left:shortest.l,top:shortest.t},700,4);
+            var templ=this.ele.l;
+            var tempt = this.ele.t;
+            this.ele.l = shortest.l;
+            this.ele.t = shortest.t;
+            shortest.l = templ;
+            shortest.t = tempt;
+        }else{
+            animate(this.ele,{left:this.ele.l,top:this.ele.t},700,3);
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+@charset "utf-8";
+*{
+    margin:0;
+    padding: 0;
+    font-size: 12px;
+}
+ul{
+    list-style: none;
+}
+a:link{
+    text-decoration: none;
+    color: #19407c;
+}
+.box{
+    width: 150px;
+    margin: 20px auto;
+}
+.box .menu{
+    overflow: hidden;
+}
+.box .menu .level1{
+    overflow: hidden;
+    border:1px solid #b5c0cb;
+    border-collapse: collapse;
+    background-color: #00FFFF;
+}
+.box .menu .level1 a{
+    height: 30px;
+    display: block;
+    line-height: 30px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.box .menu .level1 .level2{
+    height: 150px;
+    background-color: #b5c0cb;
+    display: none;
+}
+.box .menu .level1 .level2 li a{
+    font-weight: 400;
+}
+.box .menu .level1 .level2 li a:hover{
+    color: orange;
+}

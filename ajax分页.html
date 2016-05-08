@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #content{
+            margin:100px auto;
+        }
+        table,th,tr,td{
+            border: 1px solid aquamarine;
+            border-collapse: collapse;
+        }
+        th,td{
+            min-width: 80px;
+            height: 1.5em;
+            text-align: center;
+        }
+        #content span,#content a{
+            display: block;
+            float: left;
+            width: 60px;
+            height: 1.3em;
+            line-height: 1.3em;
+            text-align: center;
+            margin: 5px;
+            background-color: chartreuse;
+            border-radius: 5px;
+            box-shadow: 0 0 0px 3px #00FFFF;
+            color: coral;
+            cursor: pointer;
+        }
+        #content a{
+            width: 20px;
+        }
+        #content a.selected{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+<div id="content"></div>
+<script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','json/data1.txt',true);
+    xhr.send();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState==4&&xhr.status==200){
+            var data = xhr.responseText;
+            init(data,8);
+        }
+    }
+    function init(data,recordNum){
+        this.currentPage = 0;
+        var a = JSON.parse(data);
+        var content = document.getElementById('content');
+        var oTable = document.createElement('table');
+        oTable.style.position = 'absolute';
+        oTable.style.left = '200px';
+        content.appendChild(oTable);
+        var oHead = document.createElement('thead');
+        oTable.appendChild(oHead);
+        var oTr = document.createElement('tr');
+        oHead.appendChild(oTr);
+        for(var attr in a[0]){
+            oTr.innerHTML += '<th>'+attr+'</th>';
+        }
+
+        var oBody = document.createElement('tbody');
+        oTable.appendChild(oBody);
+        oBody.height = recordNum*30 +'px';
+        //console.log(oTable.height);
+        var totalPage = Math.ceil(a.length/recordNum);
+
+        var nav = document.createElement('div');
+        nav.style.position = 'absolute';
+        nav.style.left = '160px';
+        nav.style.top = recordNum*30+oTable.offsetTop + 'px';
+        content.appendChild(nav);
+
+        var oTotal = document.createElement('span');
+        nav.appendChild(oTotal);
+        oTotal.innerHTML = '共'+ totalPage +'页';
+        showPage(this.currentPage);
+
+        var oFirst = document.createElement('span');
+        nav.appendChild(oFirst);
+        oFirst.innerHTML = '首页';
+        oFirst.onclick = firstPage;
+
+        var oPrev = document.createElement('span');
+        nav.appendChild(oPrev);
+        oPrev.innerHTML = '上一页';
+        oPrev.onclick = prevPage;
+
+        for(var i=0;i<totalPage;i++){
+            var oPage = document.createElement('a');
+            oPage.href = '#';
+            oPage.innerHTML = i+1;
+            //oPage.innerHTML = '第'+(i+1)+'页';
+
+            oPage.onclick = function(){
+                //showPage(this.currentPage = this.innerHTML.match(/\d+/)[0]-1);
+                showPage(currentPage = (this.innerHTML-1));
+                if(currentPage==0){
+                    oNext.style.backgroundColor = '';
+                    oPrev.style.backgroundColor = '#ccc';
+                }else if(currentPage==totalPage-1){
+                    oNext.style.backgroundColor = '#ccc';
+                    oPrev.style.backgroundColor = '';
+                }else{
+                    oNext.style.backgroundColor = '';
+                    oPrev.style.backgroundColor = '';
+                }
+                return;
+            }
+            nav.appendChild(oPage);
+            if(!i) oPage.className = 'selected';
+        }
+
+        var oNext = document.createElement('span');
+        nav.appendChild(oNext);
+        oNext.innerHTML = '下一页';
+        oNext.onclick = nextPage;
+
+        var oLast = document.createElement('span');
+        nav.appendChild(oLast);
+        oLast.innerHTML = '尾页';
+        oLast.onclick = lastPage;
+
+        var oSearch = document.createElement('input');
+        oSearch.type = 'text';
+        oSearch.style.width = '100px';
+        oSearch.value = parseInt(this.currentPage+1);
+        nav.appendChild(oSearch);
+
+        var oFind = document.createElement('input');
+        oFind.type = 'button';
+        oFind.value = '查询';
+        nav.appendChild(oFind);
+        oFind.onclick = findPage;
+
+        function showPage(n){
+            oBody.innerHTML = '';
+            for(var i=n*recordNum;i<(n+1)*recordNum;i++){
+                var oTr = document.createElement('tr');
+                oBody.appendChild(oTr);
+                for(var attr in a[i]){
+                    var oTd = document.createElement('td');
+                    oTd.innerHTML = a[i][attr];
+                    oTr.appendChild(oTd);
+                }
+                oBody.appendChild(oTr);
+            }
+
+            var eles = document.getElementsByTagName('a');
+            if(eles.length){
+                for(var i=0;i<eles.length;i++){
+                    eles[i].className = '';
+                }
+                eles[n].className = 'selected';
+            }
+        }
+        var that = this;
+        oPrev.style.backgroundColor = '#ccc';
+        function prevPage(){
+            if(that.currentPage>0){
+                showPage(--that.currentPage);
+            }
+            if(that.currentPage == 0){
+                oPrev.style.backgroundColor = '#ccc';
+            }else{
+                oNext.style.backgroundColor = '';
+                oPrev.style.backgroundColor = '';
+            }
+        }
+        function nextPage(){
+            if(that.currentPage<totalPage-1){
+                showPage(++that.currentPage);
+            }
+            if(that.currentPage == totalPage-1){
+                oNext.style.backgroundColor = '#ccc';
+            }else{
+                oPrev.style.backgroundColor = '';
+                oNext.style.backgroundColor = '';
+            }
+        }
+        function firstPage(){
+            showPage(0);
+            that.currentPage = 0;
+            oPrev.style.backgroundColor='#ccc';
+            oNext.style.backgroundColor = '';
+        }
+        function lastPage(){
+            showPage(totalPage-1);
+            that.currentPage = totalPage-1;
+            oNext.style.backgroundColor = '#ccc';
+            oPrev.style.backgroundColor = '';
+        }
+        function findPage(){
+            that.currentPage = oSearch.value;
+            if(that.currentPage<0){
+                that.currentPage = 0;
+                showPage(0);
+                oNext.style.backgroundColor = '';
+                oPrev.style.backgroundColor = '#ccc';
+            }else if(that.currentPage>totalPage-1){
+                that.currentPage = totalPage - 1;
+                showPage(totalPage-1);
+                oNext.style.backgroundColor = '#ccc';
+                oPrev.style.backgroundColor = '';
+            }else{
+                showPage(--that.currentPage);
+                if(that.currentPage==0){
+                    oNext.style.backgroundColor = '';
+                    oPrev.style.backgroundColor = '#ccc';
+                }else if(that.currentPage==totalPage-1){
+                    oNext.style.backgroundColor = '#ccc';
+                    oPrev.style.backgroundColor = '';
+                }else{
+                    oNext.style.backgroundColor = '';
+                    oPrev.style.backgroundColor = '';
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

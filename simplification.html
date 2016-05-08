@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/simplification.css"/>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li><a href="#">佳能</a><i>(30440)</i></li>
+        <li><a href="#">索尼</a><i>(27220)</i></li>
+        <li><a href="#">三星</a><i>(20808)</i></li>
+        <li><a href="#">尼康</a><i>(17821)</i></li>
+        <li><a href="#">松下</a><i>(12289)</i></li>
+        <li><a href="#">卡西欧</a><i>(8242)</i></li>
+        <li><a href="#">富士</a><i>(14894)</i></li>
+        <li><a href="#">柯达</a><i>(9520)</i></li>
+        <li><a href="#">宾得</a><i>(2195)</i></li>
+        <li><a href="#">理光</a><i>(4114)</i></li>
+        <li><a href="#">奥林巴斯</a><i>(12205)</i></li>
+        <li><a href="#">明基</a><i>(1466)</i></li>
+        <li><a href="#">爱国者</a><i>(3091)</i></li>
+        <li><a href="#">其它品牌相机</a><i>(7272)</i></li>
+    </ul>
+</div>
+<div class="showmore">
+    <a href="more.html"><span>显示全部品牌</span></a>
+</div>
+<!--<script src="scripts/jquery.js"></script>
+<script type="text/javascript">
+    var $oLis = $(".container>ul>li");
+    var $ctrlLis = $oLis.filter("li:gt(5):not(:last)");
+    var $promotedLis = $oLis.filter(":contains(理光),:contains(富士),:contains(明基)");
+    $ctrlLis.hide();
+    $(".showmore>a").click(function(){
+        if($ctrlLis.is(":visible")){
+            $ctrlLis.hide();
+            $("span",this).text("显示全部品牌").css("background-image","url(images/down.gif)");
+            $promotedLis.removeClass("promoted");
+        }else{
+            $ctrlLis.show();
+            $("span",this).text("显示精简品牌").css("background-image","url(images/up.gif)");
+            $promotedLis.addClass("promoted");
+        }
+        return false;
+    })
+</script>-->
+<script type="text/javascript" src="js/DOM.js"></script>
+<script type="text/javascript">
+    var oContainer = DOM.getElesByClass(".container")
+    var oLis = document.getElementsByTagName("li");
+    var ctrlLis = DOM.listToArray(oLis).slice(6,oLis.length-1);
+    var promotedLis = [];
+    var reg = /爱国者|佳能|松下/;
+    for(var i=0;i<oLis.length;i++){
+        if(reg.test(oLis[i].innerHTML)){
+            promotedLis.push(oLis[i]);
+        }
+    }
+
+    for(var i=0;i<ctrlLis.length;i++){
+        ctrlLis[i].style.display = "none";
+    }
+
+    var oA = DOM.children(DOM.getElesByClass("showmore")[0],"a")[0];
+    oA.onclick = function(){
+        var oSpan = DOM.children(this,"span")[0];
+        if(ctrlLis[0].style.display == "none"){
+            for(var i=0;i<ctrlLis.length;i++){
+                ctrlLis[i].style.display = "block";
+            }
+            oSpan.innerHTML = "显示精简品牌";
+            oSpan.style.backgroundImage = "url(images/up.gif)";
+            for(var i=0;i<promotedLis.length;i++){
+                DOM.addClass(promotedLis[i],"promoted");
+            }
+        }else{
+            for(var i=0;i<ctrlLis.length;i++){
+                ctrlLis[i].style.display = "none";
+            }
+            oSpan.innerHTML = "显示全部品牌";
+            oSpan.style.backgroundImage = "url(images/down.gif)";
+            for(var i=0;i<promotedLis.length;i++){
+                DOM.removeClass(promotedLis[i],"promoted");
+            }
+        }
+        return false;
+    }
+</script>
+</body>
+</html>
